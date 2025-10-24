@@ -2,12 +2,14 @@ from src.models.LiteLLMModel import LiteLLMModel
 from src.agents.judge.JudgeAgent import JudgeAgent
 from src.agents.full_context.FullContextAgent import FullContextAgent
 from src.core.LongMemEvalDataset import LongMemEvalDataset
+from src.models.TransformersModel import TransformersModel
 
 
 def run_experiment(N: int):
-    litellm_model = LiteLLMModel("azure/gpt-4.1")
-    judge_agent = JudgeAgent(litellm_model)
-    memory_agent = FullContextAgent(litellm_model)
+    # litellm_model = LiteLLMModel("azure/gpt-4.1")
+    model = TransformersModel("Qwen/Qwen3-1.7B")
+    judge_agent = JudgeAgent(model)
+    memory_agent = FullContextAgent(model)
 
     correct_predictions = 0
     longmemeval_o_dataset = LongMemEvalDataset("oracle")
