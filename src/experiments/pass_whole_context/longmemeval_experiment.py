@@ -34,5 +34,5 @@ def run_experiment(config):
         print(f"Correct: {answer_is_correct}")
         print("-" * 100)
 
-    print(f"Correct predictions: {correct_predictions}/{N}")
-    print(f"Accuracy: {correct_predictions/N}")
+    print(f"Correct predictions: {correct_predictions}/{config['N']}")
+    print(f"Accuracy: {correct_predictions/config['N']}")
