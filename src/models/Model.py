@@ -2,8 +2,8 @@ from abc import ABC, abstractmethod
 
 
 class Model(ABC):
-    def __init__(self, model_name):
-        self.model_name = model_name
+    def __init__(self, name):
+        self.name = name
 
     @abstractmethod
     def reply(self, messages, tools=None):
