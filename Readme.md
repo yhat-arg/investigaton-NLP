@@ -1,3 +1,5 @@
+uv venv .venv --python=python3.13
+
 # LongMemEval - Resumen del Paper
 
 # Preguntas que tengo del paper

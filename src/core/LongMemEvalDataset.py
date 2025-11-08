@@ -33,7 +33,9 @@ class LongMemEvalDataset:
         }
 
         with open(paths[dataset_type], "r", encoding="utf-8") as f:
-            self.dataset = pd.DataFrame(json.load(f)).reset_index(drop=True)
+            self.dataset = (
+                pd.DataFrame(json.load(f)).sample(frac=1, random_state=42).reset_index(drop=True)
+            )
 
         self.current_index = 0
 

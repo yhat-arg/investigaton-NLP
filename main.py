@@ -8,11 +8,11 @@ load_dotenv()
 if __name__ == "__main__":
     config = Config(
         memory_model=MemoryModelConfig(
-            model_type="transformers",
-            model_name="Qwen/Qwen3-4B",
+            model_type="litellm",
+            model_name="azure/gpt-5-mini",
         ),
         memory_agent="RAG",
-        judge_model_name="azure/gpt-4.1",
+        judge_model_name="azure/gpt-5-mini",
         longmemeval_dataset_type="short",
         N=-1,
     )
