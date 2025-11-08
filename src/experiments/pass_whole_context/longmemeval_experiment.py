@@ -69,6 +69,7 @@ def run_experiment(config: Config):
                         "answer_is_correct": answer_is_correct,
                     },
                     f,
+                    indent=2,
                 )
 
             print(f"Question: {instance.question}", flush=True)

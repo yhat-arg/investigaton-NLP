@@ -50,6 +50,16 @@ Una vez instalado, instala las dependencias usando
 uv sync
 ```
 
+Es posible que aun haciendo esto les salga el error de que torch no esta instalado. Eso es porque uv sync no va a instalar torch para que ustedes puedan instalarlo manualmente segun la version que necesiten (por ej con soporte para cuda)
+
+Lo mismo con transformers.
+
+La forma mas rapida de arreglar esto es
+
+```
+uv pip install torch transformers
+```
+
 ### Descarga de datasets
 
 Con las dependencias ya instaladas, descarga los datasets del benchmark usando
@@ -61,7 +71,7 @@ uv run scripts/download_dataset.py # Para descargar los datasets
 o
 
 ```sh
-source .venv/ibin/activate # Para activar el virtual environment
+source .venv/bin/activate # Para activar el virtual environment
 python scripts/download_dataset.py
 ```
 
