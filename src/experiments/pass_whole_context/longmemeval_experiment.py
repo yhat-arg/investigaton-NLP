@@ -22,7 +22,7 @@ def load_memory_model(config: Config):
 
 def load_memory_agent(memory_model: Model, config: Config):
     if config.memory_agent == "RAG":
-        return RAGAgent(model=memory_model)
+        return RAGAgent(model=memory_model, embedding_model_name=config.embedding_model_name)
     elif config.memory_agent == "FullContext":
         return FullContextAgent(model=memory_model)
     else:

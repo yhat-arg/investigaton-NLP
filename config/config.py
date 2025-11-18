@@ -13,11 +13,13 @@ class MemoryModelConfig(BaseModel):
         default=False, description="Whether to use quantization for transformers models"
     )
 
-
 class Config(BaseModel):
     """Configuration class for LongMemEval experiments."""
 
     memory_model: MemoryModelConfig = Field(..., description="Memory model configuration")
+    embedding_model_name: str = Field(
+        default="ollama/nomic-embed-text", description="Name of the embedding model"
+    )
     judge_model_name: str = Field(..., description="Judge model name")
 
     memory_agent: Literal["RAG", "FullContext"] = Field(..., description="Memory agent to use")
