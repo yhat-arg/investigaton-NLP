@@ -2,11 +2,18 @@
 
 ## Introducción
 
-Este repositorio acompaña el track de NLP y plantea el desafío de ampliar un asistente conversacional (chatbot) con un módulo de memoria.
+En un futuro cercano, los asistentes conversacionales correrán directamente *en tu celular*: modelos de LLMs pequeños, eficientes y capaces de recordar tus hábitos, tus gustos y el contexto de tus últimas conversaciones. Para que ese tipo de agentes sea posible, necesitan **módulos de memoria optimizados**: rápidos, baratos de ejecutar y sin depender de modelos gigantes.  
+Este track propone justamente eso: **explorar cómo diseñar el mejor sistema de memoria para agentes conversacionales usando modelos pequeños de LLMs**, comparando distintas estrategias y evaluando su eficiencia y calidad.
 
-Incluimos una referencia básica basada en un *semantic retriever*. Recordemos que un retriever semántico puede pensarse como una función que, para una consulta `Q` y un conjunto de documentos `D`, devuelve la relevancia de cada documento condicionada a la consulta.
+Este repositorio acompaña el track de NLP del Investigathon de YHat y plantea el desafío de ampliar un asistente conversacional con un módulo de memoria.  
+Incluimos una referencia básica basada en un *semantic retriever*, que servirá como baseline.
+
+Un **retriever semántico** o **RAG** puede pensarse como una función que, dada una consulta `Q` y un conjunto de documentos `D`, calcula un embedding para cada documento y devuelve los **top-k documentos más relevantes** según su similitud con la consulta. 
 
 La utilización de este proyecto es completamente opcional: pueden usarlo tal cual, adaptarlo o simplemente tomarlo como fuente de inspiración.
+
+> **Nota:** la explicación completa del benchmark, el formato de las instancias y los criterios de evaluación (incluyendo cómo evaluamos correctitud y memoria) está en `benchmark_explanation.md`.
+
 
 ## Estructura del proyecto
 
