@@ -7,8 +7,7 @@ load_dotenv()
 
 for filename in [
     "longmemeval_oracle.json",
-    "longmemeval_s_cleaned.json",
-    "longmemeval_m_cleaned.json",
+    "longmemeval_s_cleaned.json"
 ]:
     print(f"Downloading {filename}...")
     hf_hub_download(
