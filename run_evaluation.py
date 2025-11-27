@@ -63,10 +63,10 @@ def load_config_from_main() -> Config:
     return Config(
         memory_model=MemoryModelConfig(
             model_type="litellm",
-            model_name="ollama/qwen3:8b-q4_K_M",
+            model_name="ollama/gemma3:4b",
         ),
         memory_agent="RAG",
-        judge_model_name="ollama/qwen3:8b-q4_K_M",
+        judge_model_name="ollama/gemma3:4b",
         longmemeval_dataset_type="short",
         N=10,
     )
