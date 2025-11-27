@@ -171,7 +171,6 @@ Sirve para medir estabilidad:
 ### **4. AVG Context Length**  
 Longitud promedio del contexto enviado al modelo por pregunta.  
 Esto permite comparar:  
-- métodos que leen todo el historial (FullContext)  
 - métodos que recuperan poco (RAG)  
 - métodos con compresión o resúmenes dinámicos
 
