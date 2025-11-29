@@ -98,7 +98,7 @@ Para cada atributo, un LLM genera un párrafo narrado desde la perspectiva del u
 A partir del párrafo, otro modelo genera pares (pregunta, respuesta).  
 Estas preguntas luego pasan por revisión humana para calidad y diversidad.
 
-### 5.3 Evidence Session Construction *(faltante en tu texto)*  
+### 5.3 Evidence Session Construction
 Los autores generan sesiones adicionales que contienen la evidencia necesaria para responder las preguntas, pero distribuidas y mezcladas con ruido conversacional realista.
 
 ### 5.4 History Compilation  
@@ -109,7 +109,7 @@ Se ensamblan todas las sesiones en orden temporal, formando historiales largos y
 ## 6. Métricas del Benchmark
 
 Dado que las respuestas son abiertas, no se usa exact match.  
-El benchmark utiliza **LLM-as-a-judge**.
+El benchmark utiliza **LLM-as-a-judge**. Deben usar el mismo prompt dado en este repo
 ---
 
 # 8. Restricción de modelos permitidos
