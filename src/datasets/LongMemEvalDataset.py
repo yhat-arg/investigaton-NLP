@@ -31,9 +31,9 @@ class LongMemEvalDataset:
         if type not in ["oracle", "short"]:
             raise ValueError(f"Invalid dataset type: {type}. Must be 'oracle' or 'short'")
 
-        if set not in ["longmemeval", "investigathon_evaluation", "investigathon_heldout"]:
+        if set not in ["longmemeval", "investigathon_evaluation", "investigathon_held_out"]:
             raise ValueError(
-                f"Invalid dataset set: {set}. Must be 'longmemeval' or 'investigathon_evaluation' or 'investigathon_heldout'"
+                f"Invalid dataset set: {set}. Must be 'longmemeval' or 'investigathon_evaluation' or 'investigathon_held_out'"
             )
 
         if set == "longmemeval":
@@ -46,13 +46,13 @@ class LongMemEvalDataset:
                 "oracle": "data/investigathon/Investigathon_LLMTrack_Evaluation_oracle.json",  # Solo sesiones relevantes
                 "full": "data/investigathon/Investigathon_LLMTrack_Evaluation_s_cleaned.json",  # Todas las sesiones (~115k tokens)
             }[type]
-        elif set == "investigathon_heldout":
+        elif set == "investigathon_held_out":
             if type != "short":
                 raise ValueError(f"Invalid dataset type: {type} for held-out set. Must be 'short'")
-            path = ("data/investigathon/Investigathon_LLMTrack_HeldOut_s_cleaned.json",)
+            path = "data/investigathon/Investigathon_LLMTrack_HeldOut_s_cleaned.json"
         else:
             raise ValueError(
-                f"Invalid dataset set: {set}. Must be 'longmemeval' or 'investigathon_evaluation' or 'investigathon_heldout'"
+                f"Invalid dataset set: {set}. Must be 'longmemeval' or 'investigathon_evaluation' or 'investigathon_held_out'"
             )
 
         with open(path, "r", encoding="utf-8") as f:
@@ -81,5 +81,5 @@ class LongMemEvalDataset:
                 )
             ],
             t_question=row["question_date"],
-            answer=row["answer"],
+            answer=row.get('answer')
         )

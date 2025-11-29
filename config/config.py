@@ -14,7 +14,7 @@ class Config(BaseModel):
         ..., description="Type of LongMemEval dataset to use"
     )
 
-    longmemeval_dataset_set: Literal["longmemeval", "investigathon_evaluation", "investigathon_heldout"] = Field(
+    longmemeval_dataset_set: Literal["longmemeval", "investigathon_evaluation", "investigathon_held_out"] = Field(
         ..., description="Set of LongMemEval dataset to use"
     )
 
