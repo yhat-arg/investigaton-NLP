@@ -1,18 +1,6 @@
 from typing import Literal
 from pydantic import BaseModel, Field
 
-
-class MemoryModelConfig(BaseModel):
-    """Configuration for memory models."""
-
-    model_type: Literal["transformers", "litellm"] = Field(
-        ..., description="Type of memory model to use"
-    )
-    model_name: str = Field(..., description="Name of the model")
-    quantized: bool = Field(
-        default=False, description="Whether to use quantization for transformers models"
-    )
-
 class Config(BaseModel):
     """Configuration class for LongMemEval experiments."""
 
@@ -24,6 +12,10 @@ class Config(BaseModel):
 
     longmemeval_dataset_type: Literal["oracle", "short", "long"] = Field(
         ..., description="Type of LongMemEval dataset to use"
+    )
+
+    longmemeval_dataset_set: Literal["longmemeval", "investigathon_evaluation", "investigathon_heldout"] = Field(
+        ..., description="Set of LongMemEval dataset to use"
     )
 
     N: int = Field(default=10, description="Number of samples to process")

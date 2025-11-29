@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+import os
 
 
 class Session:
@@ -25,17 +26,37 @@ class LongMemEvalInstance:
 
 
 class LongMemEvalDataset:
-    def __init__(self, dataset_type: str):
-        paths = {
-            "oracle": "data/longmemeval/longmemeval_oracle.json",
-            "short": "data/longmemeval/longmemeval_s_cleaned.json",
-            "long": "data/longmemeval/longmemeval_m_cleaned.json",
-        }
+    def __init__(self, type, set):
 
-        with open(paths[dataset_type], "r", encoding="utf-8") as f:
-            self.dataset = (
-                pd.DataFrame(json.load(f)).sample(frac=1, random_state=42).reset_index(drop=True)
+        if type not in ["oracle", "short"]:
+            raise ValueError(f"Invalid dataset type: {type}. Must be 'oracle' or 'short'")
+
+        if set not in ["longmemeval", "investigathon_evaluation", "investigathon_heldout"]:
+            raise ValueError(
+                f"Invalid dataset set: {set}. Must be 'longmemeval' or 'investigathon_evaluation' or 'investigathon_heldout'"
             )
+
+        if set == "longmemeval":
+            path = {
+                "oracle": "data/longmemeval/longmemeval_oracle.json",
+                "short": "data/longmemeval/longmemeval_s_cleaned.json",
+            }[type]
+        elif set == "investigathon_evaluation":
+            path = {
+                "oracle": "data/investigathon/Investigathon_LLMTrack_Evaluation_oracle.json",  # Solo sesiones relevantes
+                "full": "data/investigathon/Investigathon_LLMTrack_Evaluation_s_cleaned.json",  # Todas las sesiones (~115k tokens)
+            }[type]
+        elif set == "investigathon_heldout":
+            if type != "short":
+                raise ValueError(f"Invalid dataset type: {type} for held-out set. Must be 'short'")
+            path = ("data/investigathon/Investigathon_LLMTrack_HeldOut_s_cleaned.json",)
+        else:
+            raise ValueError(
+                f"Invalid dataset set: {set}. Must be 'longmemeval' or 'investigathon_evaluation' or 'investigathon_heldout'"
+            )
+
+        with open(path, "r", encoding="utf-8") as f:
+            self.dataset = pd.DataFrame(json.load(f)).sample(frac=1, random_state=42).reset_index(drop=True)
 
         self.current_index = 0
 

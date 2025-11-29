@@ -10,5 +10,6 @@ dependencies = [
     "huggingface-hub",
     "pydantic",
     "gdown",
-    "ipykernel"
+    "ipykernel",
+    "black"
 ]
