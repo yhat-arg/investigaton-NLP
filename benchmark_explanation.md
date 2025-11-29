@@ -108,11 +108,19 @@ Se ensamblan todas las sesiones en orden temporal, formando historiales largos y
 
 ## 6. Métricas del Benchmark
 
-### 6.1 Question Answering (QA Accuracy)
-
 Dado que las respuestas son abiertas, no se usa exact match.  
 El benchmark utiliza **LLM-as-a-judge**.
 ---
+
+# 8. Restricción de modelos permitidos
+
+Cada equipo puede usar **cualquier modelo de hasta 4B parámetros** para ejecutar cualquier parte del sistema que lleve a la respuesta a la pregunta.
+
+Esto incluye:
+
+- Modelos locales (Qwen3-4B, Gemma-3-4B, etc.)  
+
+El objetivo es evaluar **memoria y eficiencia**, no fuerza bruta ni modelos gigantes.
 
 # 7. Benchmark especial del Investigathón (muy importante)
 
@@ -129,25 +137,15 @@ Deben subir un archivo con las respuestas para estas 250 preguntas:
 
 **📅 Fecha límite para la entrega de respuesta de set de HELD OUT:**  
 **11/12 a las 16:00 (24hs antes de la final del 12/12)**
+Vamos a enviarle en la proxima semana por mail los detalles de como enviarnos las respuestas
 
 ### **Evaluación**  
 La evaluación la haremos automáticamente usando **GPT-5-mini** con el mismo prompt del `JudgeAgent` incluido en este repositorio.
 
-Cada equipo verá su **score final** durante la presentación.
+Esto sirve para tener una medicion interna de la calidad de sus metodos.
 
 Recomendamos usar el mismo modelo ustedes para la evaluacion. 
 
----
-
-# 8. Restricción de modelos permitidos
-
-Cada equipo puede usar **cualquier modelo de hasta 4B parámetros**.
-
-Esto incluye:
-
-- Modelos locales (Qwen3-4B, Gemma-3-4B, etc.)  
-
-El objetivo es evaluar **memoria y eficiencia**, no fuerza bruta ni modelos gigantes.
 
 ---
 
@@ -161,12 +159,8 @@ Exactitud promedio según el juez LLM.
 ### **2. Latencia**  
 Tiempo promedio por pregunta.
 
-### **3. Latencia IQR**  
-(IQR = *Interquartile Range*)  
-Es la dispersión entre el percentil 25 y el percentil 75 de las latencias.  
-Sirve para medir estabilidad:  
-- un IQR bajo = sistema consistente  
-- un IQR alto = impredecible/variable
+### **3. Varianza de la latencia**  
+Varianza en la latencia de los experimentos
 
 ### **4. AVG Context Length**  
 Longitud promedio del contexto enviado al modelo por pregunta.  
